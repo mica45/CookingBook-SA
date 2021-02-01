@@ -14,12 +14,14 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/general.css">
-    <link rel="stylesheet" type="text/css" href="css/<?php echo (basename($_SERVER['SCRIPT_NAME'], ".php")) ?>.css">
+    <link rel="stylesheet" type="text/css" href="css/ingredients.css">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- libraries -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
 
     <!-- Favicons -->
@@ -41,34 +43,45 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Cooking Book</a>
+        <a class="navbar-brand" href="index.html">Cooking Book</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Recipe <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ingredient List</a>
+                    <a class="nav-link" href="index.html">Recipe</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="ingredients.html">Ingredient List <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="add.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Add
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Add Recipe</a>
-                        <a class="dropdown-item" href="#">Add Ingredient</a>
+                        <a class="dropdown-item" href="add.html">Add Recipe</a>
+                        <a class="dropdown-item" href="add.html">Add Ingredient</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
             </ul>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Search by
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Name</a>
+                    <a class="dropdown-item" href="#">Main Ingredient</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Random Meal</a>
+                </div>
+            </div>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" value="" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchMeal()" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -77,32 +90,41 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <!-- Table -->
-                    <table class="table table-hover">
+                <div class="col-4">
+                    <!-- Ingredient List -->
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Recipe</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Vegetarian</th>
-                                <th scope="col">Gluten Free</th>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Spaghetti Carbonara</th>
-                                <td>20</td>
-                                <td>No</td>
-                                <td>No</td>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
                             </tr>
                             <tr>
-                                <th scope="row">Onigiri</th>
-                                <td>30</td>
-                                <td>Yes</td>
-                                <td>No</td>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
                             </tr>
                         </tbody>
                     </table>
+
+
+
                 </div>
                 <div class="col">
                     <img src="https://placekitten.com/300/300" class="img-fluid" alt="Responsive image">
@@ -136,13 +158,6 @@
         <h2><a href="mailto:mica.zaech@outlook.com">Kontakt</a></h2>
     </div>
 
-    <?php
-    if (extension_loaded("sqlite3")) {
-        echo "SQLite3-Bibliothek geladen";
-    } else {
-        echo "SQLite3-Bibliothek nicht geladen";
-    }
-    ?>
 
     <!-- Script -->
     <script src="js/index.js"></script>
