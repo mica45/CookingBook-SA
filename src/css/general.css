@@ -3,10 +3,66 @@ body {
     margin: 0;
 }
 
+.dropdown {
+    margin-right: 10px;
+}
+
+.side {
+    width: 30%;
+}
+
+.main {
+    width: 70%;
+}
+
+.meal-item {
+    margin-right: 25px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+}
+
+.meal-recipe {
+    padding-left: 25px;
+}
+
+
+.meal-image {
+    width: 75%;
+    height: auto;
+    border: 5px dashed #c7161c;
+    background: #ffbc11;
+}
+
+.recipe-image {
+    margin-top: 10px;
+    width: 600px;
+    border: 10px dashed #c7161c;
+    background: #ffbc11;
+
+
+}
+
+#recipe-image {
+    margin-top: 10px;
+    width: 600px;
+    border: 10px dashed #c7161c;
+    background: #ffbc11;
+
+}
+
+
+.videoWrapper {
+    margin-top: 25px;
+    margin-left: 25%;
+    margin-right: 75%;
+}
+
+
 header {
     padding: 60px;
     text-align: center;
-    background: rgb(204, 139, 0);
+    background: rgb(255, 188, 17);
     color: white;
 }
 

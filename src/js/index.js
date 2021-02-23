@@ -7,11 +7,11 @@ const mealList = document.getElementById('meal');
 const mealRecipe = document.getElementById('meal-recipe');
 const ingredList = document.getElementById('ingredList');
 const ingredInfo = document.getElementById('ingred-info');
-var recipeImage = document.getElementById('recipe-img').src;
+var recipeImage = document.getElementById('recipe-image').src;
 
 
 function changeImage(a) {
-    document.getElementById('recipe-img').src = a;
+    document.getElementById('recipe-image').src = a;
 }
 
 function selectSearchType(type) {
@@ -61,7 +61,7 @@ function getMealList() {
                     html += `
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
-                            <img src = "${meal.strMealThumb}" alt = "food">
+                            <img class="meal-image" src = "${meal.strMealThumb}" alt = "food">
                         </div>
                         <div class = "meal-name">
                             <h3>${meal.strMeal}</h3>
@@ -94,7 +94,7 @@ function getMeal() {
                     html += `
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
-                            <img src = "${meal.strMealThumb}" alt = "food">
+                            <img class ="recipe-image" src = "${meal.strMealThumb}" alt = "food">
                         </div>
                         <div class = "meal-name">
                             <h3>${meal.strMeal}</h3>
@@ -145,7 +145,7 @@ function getRecipe() {
         const newInnerHTML = `
                 <div class="row">
                     <div class="columns five">
-                        <img src="${meal.strMealThumb}" alt="Meal Image">
+                        <img class="recipe-image"src="${meal.strMealThumb}" alt="Meal Image">
                         ${
                             meal.strCategory
                                 ? `<p><strong>Category:</strong> ${meal.strCategory}</p>`
@@ -174,6 +174,7 @@ function getRecipe() {
                         ? `
                 <div class="row">
                     <h5>Video Recipe</h5>
+                    
                     <div class="videoWrapper">
                         <iframe width="420" height="315"
                         src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}">
@@ -246,6 +247,7 @@ function getRandRecipe() {
                         ? `
                 <div class="row">
                     <h5>Video Recipe</h5>
+                    
                     <div class="videoWrapper">
                         <iframe width="420" height="315"
                         src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}">
