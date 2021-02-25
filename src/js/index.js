@@ -1,5 +1,6 @@
 const MEALDB_API_URL = 'https://www.themealdb.com/api/json/v1/1/';
 
+// constant variables with the HTML Elements
 const searchBtn = document.getElementById('search-btn');
 const searchText = document.getElementById('search-input')
 const dropdownBtn = document.getElementById('dropdownMenuButton');
@@ -10,10 +11,8 @@ const ingredInfo = document.getElementById('ingred-info');
 var recipeImage = document.getElementById('recipe-image').src;
 
 
-function changeImage(a) {
-    document.getElementById('recipe-image').src = a;
-}
 
+// this function is to change the search type in the seach bar
 function selectSearchType(type) {
     var searchType = String(type);
     if (searchType == "byName") {
@@ -38,6 +37,7 @@ function selectSearchType(type) {
 
 }
 
+// this is to execute the right function for the right search type
 function searchType() {
     if (searchText.placeholder == "search by Name") {
         getRecipe();
@@ -51,13 +51,17 @@ function searchType() {
 
 // get meal list that matches with the ingredients
 function getMealList() {
+    // gets the search field value
     let searchInputTxt = document.getElementById('search-input').value.trim();
+    // API query 
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
+        // converts API Response to JSON File
         .then(response => response.json())
         .then(data => {
             let html = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
+                    // HTML that will get inserted onto the index page
                     html += `
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
@@ -69,7 +73,7 @@ function getMealList() {
                         </div>
                     </div>
                 `;
-                    changeImage(meal.strMealThumb);
+
                 });
 
                 mealList.classList.remove('notFound');
@@ -84,13 +88,17 @@ function getMealList() {
 
 // get meal list that matches with the name
 function getMeal() {
+    // gets the search field value
     let searchInputTxt = document.getElementById('search-input').value.trim();
+    // API query 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInputTxt}`)
+        // converts API Response to JSON File
         .then(response => response.json())
         .then(data => {
             let html = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
+                    // HTML that will get inserted onto the index page
                     html += `
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
@@ -102,7 +110,7 @@ function getMeal() {
                         </div>
                     </div>
                 `;
-                    changeImage(meal.strMealThumb);
+
                 });
 
 
@@ -117,8 +125,11 @@ function getMeal() {
 }
 
 function getRecipe() {
+    // gets the search field value
     let searchInputTxt = document.getElementById('search-input').value.trim();
+    // API query 
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + searchInputTxt)
+        // converts API Response to JSON File
         .then(res => res.json())
         .then(res => {
             createMeal(res.meals[0]);
@@ -142,6 +153,7 @@ function getRecipe() {
             }
         }
 
+        // HTML that will get inserted onto the index page
         const newInnerHTML = `
                 <div class="row">
                     <div class="columns five">
@@ -192,7 +204,9 @@ function getRecipe() {
 
 function getIngredRecipe(mealId) {
     console.log("getIngred has been triggered: mealId= " + mealId)
+    // API query 
     fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId)
+        // converts API Response to JSON File
         .then(res => res.json())
         .then(res => {
             createMeal(res.meals[0]);
@@ -216,6 +230,7 @@ function getIngredRecipe(mealId) {
             }
         }
 
+        // HTML that will get inserted onto the index page
         const newInnerHTML = `
                 <div class="row">
                     <div class="columns five">
@@ -265,7 +280,9 @@ function getIngredRecipe(mealId) {
 };
 
 function getRandRecipe() {
+    // API query to receive random recipe
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+        // converts API Response to JSON File
         .then(res => res.json())
         .then(res => {
             createMeal(res.meals[0]);
@@ -289,6 +306,7 @@ function getRandRecipe() {
             }
         }
 
+        // HTML that will get inserted onto the index page
         const newInnerHTML = `
                 <div class="row">
                     <div class="columns five">
@@ -339,12 +357,15 @@ function getRandRecipe() {
 
 // get meal Ingredient List
 function getIngredientList() {
+    // API query to get all ingredients available
     fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
+        // converts API Response to JSON File
         .then(response => response.json())
         .then(data => {
             let html = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
+                    // HTML that will get inserted onto the index page
                     html += `
                     <li class="list-group-item" name="${meal.strIngredient}" id="${meal.strIngredient}-item"  onclick="getIngredInfo('${meal.strIngredient}')">${meal.strIngredient}</li>
                 `;
@@ -361,6 +382,8 @@ function getIngredientList() {
         });
 }
 
+
+
 function getIngredInfo(name) {
     var ingred = document.getElementById(name + "-item");
     var name = ingred.name;
@@ -368,6 +391,7 @@ function getIngredInfo(name) {
     console.log("name: " + name);
     console.log("desc: " + desc);
     let html = "";
+    // HTML that will get inserted onto the index page
     html += `
                     <img src="https://www.themealdb.com/images/ingredients/${ingred.name}.png" alt="Ingredient Image">
                     <h4>${ingred.name}</h4>
