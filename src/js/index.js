@@ -31,11 +31,12 @@ function selectSearchType(type) {
         console.log("byRand has been triggered")
         // getMealList();
 
-    } else {
+    } else
         console.log("error");
-    }
-
 }
+
+
+
 
 // this is to execute the right function for the right search type
 function searchType() {
@@ -314,7 +315,7 @@ function getRandRecipe() {
         const newInnerHTML = `
                 <div class="row">
                     <div class="columns five">
-                        <img src="${meal.strMealThumb}" alt="Meal Image">
+                        <img src="${meal.strMealThumb}" class ="recipe-image" alt="Meal Image">
                         ${
                             meal.strCategory
                                 ? `<p><strong>Category:</strong> ${meal.strCategory}</p>`
