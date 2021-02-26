@@ -1,14 +1,10 @@
-const MEALDB_API_URL = 'https://www.themealdb.com/api/json/v1/1/';
-
 // constant variables with the HTML Elements
-const searchBtn = document.getElementById('search-btn');
-const searchText = document.getElementById('search-input')
+const searchText = document.getElementById('search-input');
 const dropdownBtn = document.getElementById('dropdownMenuButton');
 const mealList = document.getElementById('meal');
 const mealRecipe = document.getElementById('meal-recipe');
 const ingredList = document.getElementById('ingredList');
 const ingredInfo = document.getElementById('ingred-info');
-var recipeImage = document.getElementById('recipe-image').src;
 
 
 
@@ -16,19 +12,19 @@ var recipeImage = document.getElementById('recipe-image').src;
 function selectSearchType(type) {
     var searchType = String(type);
     if (searchType == "byName") {
-        searchText.placeholder = "search by Name"
+        searchText.placeholder = "search by Name";
         dropdownBtn.textContent = "by Name";
-        console.log("byName has been triggered")
+        console.log("byName has been triggered");
         // getMeal();
     } else if (searchType == "byIngred") {
-        searchText.placeholder = "search by Ingredient"
+        searchText.placeholder = "search by Ingredient";
         dropdownBtn.textContent = "by Ingred";
-        console.log("byIngred has been triggered")
+        console.log("byIngred has been triggered");
         // getMealList();
     } else if (searchType == "byRand") {
-        searchText.placeholder = "search by Random"
+        searchText.placeholder = "search by Random";
         dropdownBtn.textContent = "by Rand";
-        console.log("byRand has been triggered")
+        console.log("byRand has been triggered");
         // getMealList();
 
     } else
@@ -47,9 +43,8 @@ function searchType() {
     } else if (searchText.placeholder == "search by Name") {
         getRecipe();
     } else if (searchText.placeholder == "search by Ingredient") {
-        getMealList()
+        getMealList();
     }
-
 }
 
 
@@ -205,10 +200,10 @@ function getRecipe() {
         mealRecipe.innerHTML = newInnerHTML;
     };
 
-};
+}
 
 function getIngredRecipe(mealId) {
-    console.log("getIngred has been triggered: mealId= " + mealId)
+    console.log("getIngred has been triggered: mealId= " + mealId);
     // API query 
     fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId)
         // converts API Response to JSON File
@@ -282,7 +277,7 @@ function getIngredRecipe(mealId) {
         mealRecipe.innerHTML = newInnerHTML;
     };
 
-};
+}
 
 function getRandRecipe() {
     // API query to receive random recipe
