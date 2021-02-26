@@ -63,7 +63,7 @@
                     <a class="nav-link" href="ingredients.html">Ingredient List</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="add.html" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle disabled" href="add.html" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Add
                     </a>
@@ -78,20 +78,21 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Search by
+                    search by
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Name</a>
-                    <a class="dropdown-item" href="#">Main Ingredient</a>
+                    <a class="dropdown-item" id="searchName" onclick="selectSearchType('byName')">Name</a>
+                    <a class="dropdown-item" id="searchIngred" onclick="selectSearchType('byIngred')">Main
+                        Ingredient</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Random Meal</a>
+                    <a class="dropdown-item" id="searchRand" onclick="getRandRecipe()">Random Meal</a>
                 </div>
             </div>
             <div class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="Search" value=""
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" onclick=""
-                    type="submit">Search</button>
+                <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="search" value=""
+                    aria-label="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" onclick="searchType()"
+                    type="submit">search</button>
             </div>
         </div>
     </nav>
@@ -107,8 +108,9 @@
                             <!-- ingredient item -->
                             <ul class="list-group" id="ingredList">
                                 <div class="ingred-name">
-                                    <li class="list-group-item" onclick="getIngredInfo()">
-                                        Cras justo odio</li>
+                                    <!-- Placeholder for Ingredient List -->
+                                    <!-- <li class="list-group-item" onclick="getIngredInfo()">
+                                        Cras justo odio</li> -->
                                 </div>
                             </ul>
                             <!-- end of ingredient item -->
@@ -120,7 +122,8 @@
                 </div>
                 <div class="col">
                     <div class="ingred-info" id="ingred-info">
-                        <img src="https://placekitten.com/300/300" class="img-fluid" id="recipe-img"
+                        <!-- Placeholder HTML for dev purposes -->
+                        <!-- <img src="https://placekitten.com/300/300" class="img-fluid" id="recipe-img"
                             alt="Responsive image">
 
                         <div class="input-group mb-3">
@@ -142,7 +145,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Example textarea</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

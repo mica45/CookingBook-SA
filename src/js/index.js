@@ -39,7 +39,11 @@ function selectSearchType(type) {
 
 // this is to execute the right function for the right search type
 function searchType() {
-    if (searchText.placeholder == "search by Name") {
+    // checks if site is index, if not return to index
+    console.log("curren site= " + window.location.href);
+    if (window.location.href == "http://localhost/CookingBook-VA/src/ingredients.html#" || window.location.href == "http://localhost/CookingBook-VA/src/ingredients.html") {
+        window.location.href = "http://localhost/CookingBook-VA/src/index.html";
+    } else if (searchText.placeholder == "search by Name") {
         getRecipe();
     } else if (searchText.placeholder == "search by Ingredient") {
         getMealList()
